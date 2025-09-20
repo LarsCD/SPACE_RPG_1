@@ -1,0 +1,295 @@
+{
+    "debug": {
+        "debug_station_01": {
+            "info": {
+                "tag": "debug_data",
+                "name": "Debug Station",
+                "loc_type": "station",
+                "description": "This is a station."
+            },
+            "location": {
+                "coordinates": [2580.0, 2030.1]
+            },
+            "functions": {
+                "services": ["jobs", "market", "repair"]
+            }
+        },
+        "debug_station_02": {
+            "info": {
+                "tag": "debug_data",
+                "name": "Debug Central Hub",
+                "loc_type": "station",
+                "description": "Fully operational central hub with multiple amenities.",
+                "faction": "Neutral",
+                "level_requirement": 5,
+                "capacity": 250
+            },
+            "location": {
+                "coordinates": [3120.5, 4150.2],
+                "zone": "Sector 12"
+            },
+            "functions": {
+                "services": ["jobs", "market", "repair", "docking", "training", "missions"],
+                "security_level": "high",
+                "available_fleet": ["shuttle_alpha", "cargo_beta", "fighter_gamma"]
+            },
+            "resources": {
+                "fuel_station": true,
+                "supplies": ["food", "medkits", "ammo"],
+                "shops": ["tech_store", "weapon_depot", "armor_vendor"]
+            }
+        }
+    },
+    "game": {
+        "station_01": {
+            "info": {
+                "tag": "station_01",
+                "name": "Ironhold Station",
+                "loc_type": "station",
+                "description": "A mining hub surrounded by asteroid belts.",
+                "faction": "Iron Confederacy",
+                "level_requirement": 3,
+                "capacity": 100
+            },
+            "location": {
+                "coordinates": [1200.0, 450.5],
+                "zone": "Asteroid Belt A1"
+            },
+            "functions": {
+                "services": ["market", "repair", "mining_jobs"],
+                "security_level": "medium",
+                "available_fleet": ["miner_01", "transporter_01"]
+            },
+            "resources": {
+                "fuel_station": false,
+                "supplies": ["ore", "miner_tools"],
+                "shops": ["ore_market", "tool_vendor"]
+            }
+        },
+        "station_02": {
+            "info": {
+                "tag": "station_02",
+                "name": "Silverwind Port",
+                "loc_type": "station",
+                "description": "Trade station with extensive commerce activity.",
+                "faction": "Silverwind Trade Guild",
+                "level_requirement": 2,
+                "capacity": 150
+            },
+            "location": {
+                "coordinates": [900.0, 2200.3],
+                "zone": "Sector 7"
+            },
+            "functions": {
+                "services": ["market", "docking", "missions"],
+                "security_level": "medium",
+                "available_fleet": ["freighter_alpha", "shuttle_beta"]
+            },
+            "resources": {
+                "fuel_station": true,
+                "supplies": ["food", "tools"],
+                "shops": ["general_store", "blacksmith"]
+            }
+        },
+        "station_03": {
+            "info": {
+                "tag": "station_03",
+                "name": "Crimson Spire",
+                "loc_type": "station",
+                "description": "A fortified military station.",
+                "faction": "Crimson Guard",
+                "level_requirement": 6,
+                "capacity": 200
+            },
+            "location": {
+                "coordinates": [3400.0, 1700.5],
+                "zone": "Red Sector"
+            },
+            "functions": {
+                "services": ["repair", "training", "missions"],
+                "security_level": "high",
+                "available_fleet": ["fighter_delta", "patrol_epsilon"]
+            },
+            "resources": {
+                "fuel_station": true,
+                "supplies": ["ammo", "medkits"],
+                "shops": ["armory", "tech_vendor"]
+            }
+        },
+        "station_04": {
+            "info": {
+                "tag": "station_04",
+                "name": "Bluehaven Dock",
+                "loc_type": "station",
+                "description": "A peaceful civilian port with minimal security.",
+                "faction": "Independent",
+                "level_requirement": 1,
+                "capacity": 80
+            },
+            "location": {
+                "coordinates": [500.5, 1200.2],
+                "zone": "Sector 3"
+            },
+            "functions": {
+                "services": ["market", "docking", "tourism"],
+                "security_level": "low",
+                "available_fleet": ["ferry_alpha", "shuttle_gamma"]
+            },
+            "resources": {
+                "fuel_station": true,
+                "supplies": ["food", "water"],
+                "shops": ["souvenir_shop", "cafeteria"]
+            }
+        },
+        "station_05": {
+            "info": {
+                "tag": "station_05",
+                "name": "Obsidian Outpost",
+                "loc_type": "station",
+                "description": "Remote outpost for explorers and traders.",
+                "faction": "Obsidian Collective",
+                "level_requirement": 4,
+                "capacity": 120
+            },
+            "location": {
+                "coordinates": [2500.0, 3100.0],
+                "zone": "Outer Rim"
+            },
+            "functions": {
+                "services": ["market", "repair", "missions"],
+                "security_level": "medium",
+                "available_fleet": ["scout_alpha", "transporter_beta"]
+            },
+            "resources": {
+                "fuel_station": true,
+                "supplies": ["tools", "medkits"],
+                "shops": ["general_store", "repair_vendor"]
+            }
+        },
+        "station_06": {
+            "info": {
+                "tag": "station_06",
+                "name": "Goldenspire Terminal",
+                "loc_type": "station",
+                "description": "Luxury trading station.",
+                "faction": "Golden Traders",
+                "level_requirement": 5,
+                "capacity": 200
+            },
+            "location": {
+                "coordinates": [4000.0, 1000.0],
+                "zone": "Sector 9"
+            },
+            "functions": {
+                "services": ["market", "docking", "luxury_services"],
+                "security_level": "medium",
+                "available_fleet": ["lux_shuttle_alpha", "freighter_beta"]
+            },
+            "resources": {
+                "fuel_station": true,
+                "supplies": ["luxury_goods", "food", "water"],
+                "shops": ["jewelers", "boutiques", "tech_store"]
+            }
+        },
+        "station_07": {
+            "info": {
+                "tag": "station_07",
+                "name": "Verdant Oasis",
+                "loc_type": "station",
+                "description": "A station with lush hydroponic farms.",
+                "faction": "Green Coalition",
+                "level_requirement": 3,
+                "capacity": 100
+            },
+            "location": {
+                "coordinates": [1800.0, 2700.0],
+                "zone": "Sector 5"
+            },
+            "functions": {
+                "services": ["market", "research", "docking"],
+                "security_level": "medium",
+                "available_fleet": ["cargo_alpha", "research_shuttle"]
+            },
+            "resources": {
+                "fuel_station": true,
+                "supplies": ["food", "medkits", "plants"],
+                "shops": ["botany_store", "general_store"]
+            }
+        },
+        "station_08": {
+            "info": {
+                "tag": "station_08",
+                "name": "Shadow Nexus",
+                "loc_type": "station",
+                "description": "A clandestine station with limited access.",
+                "faction": "Shadow Syndicate",
+                "level_requirement": 7,
+                "capacity": 90
+            },
+            "location": {
+                "coordinates": [3200.0, 2500.0],
+                "zone": "Sector 14"
+            },
+            "functions": {
+                "services": ["missions", "black_market", "docking"],
+                "security_level": "high",
+                "available_fleet": ["stealth_fighter", "cargo_black"]
+            },
+            "resources": {
+                "fuel_station": false,
+                "supplies": ["ammo", "tech_parts"],
+                "shops": ["black_market"]
+            }
+        },
+        "station_09": {
+            "info": {
+                "tag": "station_09",
+                "name": "Crystal Point",
+                "loc_type": "station",
+                "description": "Tourist destination with panoramic views.",
+                "faction": "Independent",
+                "level_requirement": 1,
+                "capacity": 60
+            },
+            "location": {
+                "coordinates": [600.0, 1400.0],
+                "zone": "Sector 2"
+            },
+            "functions": {
+                "services": ["tourism", "docking"],
+                "security_level": "low",
+                "available_fleet": ["tour_shuttle"]
+            },
+            "resources": {
+                "fuel_station": false,
+                "supplies": ["food", "souvenirs"],
+                "shops": ["gift_shop", "cafeteria"]
+            }
+        },
+        "station_10": {
+            "info": {
+                "tag": "station_10",
+                "name": "Stormbreaker Station",
+                "loc_type": "station",
+                "description": "A stormy outpost near hazardous regions.",
+                "faction": "Storm Guard",
+                "level_requirement": 6,
+                "capacity": 150
+            },
+            "location": {
+                "coordinates": [2900.0, 3700.0],
+                "zone": "Sector 11"
+            },
+            "functions": {
+                "services": ["repair", "missions", "docking"],
+                "security_level": "high",
+                "available_fleet": ["fighter_alpha", "rescue_shuttle"]
+            },
+            "resources": {
+                "fuel_station": true,
+                "supplies": ["medkits", "ammo", "tools"],
+                "shops": ["armory", "general_store"]
+            }
+        }
+    }
+}

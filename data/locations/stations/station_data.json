@@ -1,0 +1,28 @@
+{
+    "debug":{
+        "debug_station_01": {
+            "info": {
+                "tag": "debug_data",
+                "name": "Debug Station",
+                "loc_type": "station",
+                "station_type": "orbital",
+                "description": "This is a station."
+            },
+            "location": {
+                "coordinates": [2580.0, 2030.1],
+                "location_parent_tag": "debug_planet_01"
+            },
+            "functions": {
+                "services": ["docking", "market", "jobs", "repair", "shipyard"]
+            },
+            "flags": {
+                "is_hidden": false
+            }
+        }
+    },
+
+
+    "game": {
+
+    }
+}
