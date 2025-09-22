@@ -4,7 +4,7 @@
             "info": {
                 "tag": "debug_data",
                 "name": "Debug Station",
-                "loc_type": "station",
+                "location_type": "station",
                 "station_type": "orbital",
                 "description": "This is a station."
             },

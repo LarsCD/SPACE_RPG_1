@@ -3,8 +3,6 @@
 class Location:
 
     def __init__(self, data: dict) -> None:
-        # location
-        super().__init__(data)
         self.coordinates: tuple = tuple(data['location']['coordinates'])        # 2d coordinate
         self.location_parent_tag: str = data['location']['location_parent_tag'] # binds this location to another location as child
         self.child_locations = []
@@ -19,7 +17,7 @@ class Location:
         self.is_hidden: bool = data['flags']['is_hidden']           # is location hidden to player
 
 
-    def print_debug(self):
+    def __str__(self):
         print(f"""DEBUG INFO {self.tag}
 # location
 self.coordinates: {self.coordinates}
