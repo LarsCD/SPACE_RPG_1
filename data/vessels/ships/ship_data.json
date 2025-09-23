@@ -33,7 +33,7 @@
                     "max_range_km": 1500,
                     "min_range_km": 100,
                     "damage": 450,
-                    "hit_chance": 75,
+                    "accuracy": 0.98,
                     "fire_threshold": 0.45,
                     "range_falloff": 0.05
                 },
@@ -45,7 +45,7 @@
                     "max_range_km": 10,
                     "min_range_km": 0,
                     "damage": 45,
-                    "hit_chance": 95,
+                    "accuracy": 0.95,
                     "fire_threshold": 0.12,
                     "range_falloff": 0.5
                 }
