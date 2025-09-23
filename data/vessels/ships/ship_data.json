@@ -3,8 +3,8 @@
         "debug_ship_01": {
             "info": {
                 "tag": "debug_ship_01",
-                "name": "Debug Ship 01",
-                "location_type": "vessel",
+                "name": "Debug Ship",
+                "vessel_type": "ship",
                 "ship_type": "frigate",
                 "description": "This is a ship."
             },
@@ -24,7 +24,7 @@
                 "armor_module_defence_cutoff": 0.45,
                 "durability": 750
             },
-            "weapon": {
+            "weapons": {
                 "torpedo": {
                     "name": "Torpedo's",
                     "tag": "torpedo",
@@ -64,7 +64,6 @@
                     "accuracy": 0.56
                 }
             },
-
             "signature": {
                 "heat": 0.34,
                 "reflect": 0.67,

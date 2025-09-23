@@ -18,17 +18,7 @@ class Location:
 
 
     def __str__(self):
-        print(f"""DEBUG INFO {self.tag}
-# location
-self.coordinates: {self.coordinates}
-# info
-self.name: {self.name}
-self.tag: {self.tag}
-self.location_type: {self.location_type}
-self.description: {self.description}
-# flags
-self.is_hidden: {self.is_hidden}
-""")
+        return f"[{self.location_type}] \'{self.name}\' (tag=\'{self.tag}\') at {self.coordinates}"
 
 
     def update_location(self, coordinates: tuple) -> None:

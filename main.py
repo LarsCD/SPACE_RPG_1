@@ -1,6 +1,6 @@
 from utility.tools.dataloader import Dataloader
 from source.classes.location.station_class import Station
-from source.classes.ship._vessel import Vessel
+from source.classes.ship.ship_class import Ship
 
 def main() -> None:
     data_loader = Dataloader()

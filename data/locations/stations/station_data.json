@@ -2,18 +2,21 @@
     "debug":{
         "debug_station_01": {
             "info": {
-                "tag": "debug_data",
+                "tag": "debug_station_01",
                 "name": "Debug Station",
                 "location_type": "station",
                 "station_type": "orbital",
-                "description": "This is a station."
+                "description": "This is a station.",
+                "faction": "neutral",
+                "level_requirement": 1
             },
             "location": {
                 "coordinates": [2580.0, 2030.1],
                 "location_parent_tag": "debug_planet_01"
             },
             "functions": {
-                "services": ["docking", "market", "jobs", "repair", "shipyard"]
+                "services": ["docking", "fuel", "market", "jobs", "repair", "shipyard"],
+                "security_level": "high"
             },
             "flags": {
                 "is_hidden": false

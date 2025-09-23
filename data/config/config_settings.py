@@ -16,7 +16,7 @@ AUTH_SETTINGS = {
 }
 GAME_DEFAULTS = {
     'game_name': "SPACE RPG 1",
-    'game_version': 'v0.0.4'
+    'game_version': 'v0.0.5'
 }
 GAME_SETTINGS = {
     'game_resolution': [38, 115]
