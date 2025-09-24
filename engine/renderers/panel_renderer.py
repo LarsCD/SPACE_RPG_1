@@ -1,127 +1,141 @@
 # engine/renderers/panel_renderer.py
 import pygame
-from source.classes.ship._vessel import Vessel
-from source.classes.ship.ship_class import Ship
-from source.classes.location._location import Location
-from source.classes.location.station_class import Station
+from typing import Callable
+
+BG = (10, 10, 10)
+BORDER = (0, 100, 0)
+TEXT = (0, 255, 0)
+BTN_BG = (0, 60, 0)
+BTN_BORDER = (0, 200, 0)
+BTN_DISABLED_BG = (60, 0, 0)
+BTN_DISABLED_BORDER = (150, 0, 0)
+RED = (200, 40, 40)
 
 
 class PanelRenderer:
-    def __init__(self, surface, rect: pygame.Rect):
+    """
+    PanelRenderer supports dynamic rendering of:
+      - player info
+      - selected-target info (right panel)
+      - locked-target info (left panel)
+      - pending destination preview + Confirm/Cancel buttons
+    """
+
+    def __init__(self, surface: pygame.Surface, rect: pygame.Rect, side: str = "right"):
         self.surface = surface
-        self.rect = rect
-        self.font = pygame.font.SysFont(None, 24)
+        self.rect = pygame.Rect(rect)
+        self.side = side
+        self.font = pygame.font.SysFont(None, 20)
+        self.actions: dict[str, Callable] = {}
+        self._buttons: dict[str, tuple[pygame.Rect, bool]] = {}
 
-        # buttons are stored as {label: (rect, callback)}
-        self.buttons: dict[str, tuple[pygame.Rect, callable]] = {}
+    def register_action(self, label: str, callback: Callable):
+        self.actions[label] = callback
 
-    def draw(self, player):
-        pygame.draw.rect(self.surface, (10, 10, 10), self.rect)
-        pygame.draw.rect(self.surface, (0, 100, 0), self.rect, 2)
+    def draw(self, player, selected=None, locked=None, pending_destination=None):
+        pygame.draw.rect(self.surface, BG, self.rect)
+        pygame.draw.rect(self.surface, BORDER, self.rect, 2)
 
         y = self.rect.top + 10
-        lines = [
-            f"Player: {player.name}",
-            f"Coords: {tuple(int(c) for c in player.coordinates)}",
-        ]
-        for line in lines:
-            label = self.font.render(line, True, (0, 255, 0))
-            self.surface.blit(label, (self.rect.left + 10, y))
+        left = self.rect.left + 10
+
+        # player header
+        lines = [f"Player: {player.name}", f"Coords: {tuple(int(c) for c in player.coordinates)}"]
+        for l in lines:
+            self.surface.blit(self.font.render(l, True, TEXT), (left, y))
+            y += 22
+
+        # pending destination info + Confirm/Cancel buttons (show in right panel)
+        if pending_destination and pending_destination.get("active") and self.side == "right":
+            y += 10
+            coords = pending_destination.get("coords")
+            self.surface.blit(self.font.render(f"Pending dest: {tuple(round(c,1) for c in coords)}", True, TEXT), (left, y))
             y += 30
 
-        self.buttons.clear()
+            # render Confirm and Cancel and register as temporary buttons
+            self._buttons.clear()
+            confirm_rect = pygame.Rect(left, y, self.rect.width - 20, 32)
+            pygame.draw.rect(self.surface, BTN_BG, confirm_rect)
+            pygame.draw.rect(self.surface, BTN_BORDER, confirm_rect, 2)
+            self.surface.blit(self.font.render("Confirm Move", True, TEXT), (confirm_rect.x + 8, confirm_rect.y + 6))
+            self._buttons["Confirm Move"] = (confirm_rect, True)
+            y += 40
 
-        if player.has_target:
-            target = player.target
-            y += 20
-            y = self._draw_target_info(player, target, y)
-            y += 20
-            y = self._draw_target_buttons(player, target, y)
+            cancel_rect = pygame.Rect(left, y, self.rect.width - 20, 32)
+            pygame.draw.rect(self.surface, BTN_DISABLED_BG, cancel_rect)
+            pygame.draw.rect(self.surface, BTN_DISABLED_BORDER, cancel_rect, 2)
+            self.surface.blit(self.font.render("Cancel Move", True, RED), (cancel_rect.x + 8, cancel_rect.y + 6))
+            self._buttons["Cancel Move"] = (cancel_rect, True)
+            y += 44
 
-    def _draw_target_info(self, player, target, y):
-        if isinstance(target, Ship):
-            return self._draw_ship_info(player, target, y)
-        elif isinstance(target, Vessel):
-            return self._draw_vessel_info(player, target, y)
-        elif isinstance(target, Station):
-            return self._draw_station_info(player, target, y)
-        elif isinstance(target, Location):
-            return self._draw_location_info(player, target, y)
-        return y
+        # selected target info (right panel)
+        if selected and self.side == "right":
+            y += 6
+            self._draw_target_info(selected, player, left, y)
 
-    def _draw_ship_info(self, player, ship: Ship, y):
-        lines = [
-            f"Target: {ship.name}",
-            f"Class: {ship.ship_type}",
-            f"Distance: {round(player.get_distance_to_location_Mm(ship), 1)} Mm",
-        ]
-        return self._render_lines(lines, y)
+        # locked target info (left panel)
+        if locked and self.side == "left":
+            y += 6
+            self._draw_target_info(locked, player, left, y)
 
-    def _draw_vessel_info(self, player, vessel: Vessel, y):
-        lines = [
-            f"Target: {vessel.name}",
-            f"Type: {vessel.vessel_type}",
-            f"Distance: {round(player.get_distance_to_location_Mm(vessel), 1)} Mm",
-        ]
-        return self._render_lines(lines, y)
+    def _draw_target_info(self, target, player, left_x, start_y):
+        y = start_y
+        name = getattr(target, "name", getattr(target, "tag", "Unknown"))
+        ttype = getattr(target, "vessel_type", getattr(target, "location_type", "Unknown"))
+        dist_mm = round(player.get_distance_to_location_Mm(target), 1)
 
-    def _draw_station_info(self, player, station: Station, y):
-        services = ", ".join(station.station_services)
-        lines = [
-            f"Target: {station.name}",
-            f"Station Type: {station.station_type}",
-            f"Faction: {station.faction}",
-            f"Services: {services}",
-            f"Distance: {round(player.get_distance_to_location_Mm(station), 1)} Mm",
-        ]
-        return self._render_lines(lines, y)
-
-    def _draw_location_info(self, player, loc: Location, y):
-        lines = [
-            f"Target: {loc.name}",
-            f"Type: {loc.location_type}",
-            f"Distance: {round(player.get_distance_to_location_Mm(loc), 1)} Mm",
-        ]
-        return self._render_lines(lines, y)
-
-    def _draw_target_buttons(self, player, target, y):
-        # Ship → show attack and hail
-        if isinstance(target, Ship):
-            y = self._render_button("Attack", y, lambda: print(f"Attack {target.name}"))
-            y = self._render_button("Hail", y, lambda: print(f"Hail {target.name}"))
-
-        # Station → show dock and trade
-        elif isinstance(target, Station):
-            y = self._render_button("Dock", y, lambda: print(f"Dock at {target.name}"))
-            y = self._render_button("Trade", y, lambda: print(f"Trade with {target.name}"))
-
-        # Location → show set course
-        elif isinstance(target, Location):
-            y = self._render_button("Set Course", y, lambda: print(f"Set course to {target.name}"))
-
-        return y
-
-    def _render_lines(self, lines, y):
+        lines = [f"Target: {name}", f"Type: {ttype}", f"Distance: {dist_mm} Mm"]
         for line in lines:
-            label = self.font.render(str(line), True, (0, 255, 0))
-            self.surface.blit(label, (self.rect.left + 10, y))
-            y += 30
+            self.surface.blit(self.font.render(line, True, TEXT), (left_x, y))
+            y += 22
+
+        # example: Dock button for stations (enabled only if in range)
+        if getattr(target, "__class__", None).__name__ == "Station":
+            can_dock = dist_mm <= 0.5
+            label = "Dock"
+            rect = pygame.Rect(left_x, y, self.rect.width - 20, 32)
+            bg = BTN_BG if can_dock else BTN_DISABLED_BG
+            border = BTN_BORDER if can_dock else BTN_DISABLED_BORDER
+            pygame.draw.rect(self.surface, bg, rect)
+            pygame.draw.rect(self.surface, border, rect, 2)
+            txtcol = TEXT if can_dock else RED
+            self.surface.blit(self.font.render(label, True, txtcol), (rect.x + 8, rect.y + 6))
+            self._buttons[label] = (rect, can_dock)
+            y += 40
+
+        # vessel lock and travel buttons
+        if hasattr(target, "vessel_type"):
+            # Lock
+            rect = pygame.Rect(left_x, y, self.rect.width - 20, 32)
+            pygame.draw.rect(self.surface, BTN_BG, rect)
+            pygame.draw.rect(self.surface, BTN_BORDER, rect, 2)
+            self.surface.blit(self.font.render("Lock", True, TEXT), (rect.x + 8, rect.y + 6))
+            self._buttons["Lock"] = (rect, True)
+            y += 40
+
+            # Travel
+            rect = pygame.Rect(left_x, y, self.rect.width - 20, 32)
+            pygame.draw.rect(self.surface, BTN_BG, rect)
+            pygame.draw.rect(self.surface, BTN_BORDER, rect, 2)
+            self.surface.blit(self.font.render("Travel", True, TEXT), (rect.x + 8, rect.y + 6))
+            self._buttons["Travel"] = (rect, True)
+            y += 40
+
         return y
 
-    def _render_button(self, label: str, y: int, callback: callable) -> int:
-        rect = pygame.Rect(self.rect.left + 10, y, self.rect.width - 20, 30)
-        pygame.draw.rect(self.surface, (0, 60, 0), rect)
-        pygame.draw.rect(self.surface, (0, 200, 0), rect, 2)
+    def handle_event(self, event) -> bool:
+        """
+        Handle panel mouse clicks. Returns True if the event was consumed (a button was clicked).
+        """
+        if event.type != pygame.MOUSEBUTTONDOWN or event.button != 1:
+            return False
 
-        text = self.font.render(label, True, (0, 255, 0))
-        self.surface.blit(text, (rect.x + 10, rect.y + 5))
-
-        self.buttons[label] = (rect, callback)
-        return y + 40
-
-    def handle_event(self, event):
-        if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-            mx, my = event.pos
-            for label, (rect, callback) in self.buttons.items():
-                if rect.collidepoint(mx, my):
-                    callback()
+        mx, my = event.pos
+        # iterate a copy because callbacks might mutate _buttons
+        for label, (rect, enabled) in list(self._buttons.items()):
+            if rect.collidepoint(mx, my) and enabled:
+                cb = self.actions.get(label)
+                if cb:
+                    cb()  # execute registered callback
+                return True  # event consumed by panel
+        return False

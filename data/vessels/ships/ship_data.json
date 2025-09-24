@@ -1,79 +1,139 @@
 {
-    "debug": {
-        "debug_ship_01": {
-            "info": {
-                "tag": "debug_ship_01",
-                "name": "Debug Ship",
-                "vessel_type": "ship",
-                "ship_type": "frigate",
-                "description": "This is a ship."
-            },
-            "location": {
-                "coordinates": [0.0, 0.0]
-            },
-            "engine": {
-                "fuel_use_p_Mm": 2.56,
-                "durability": 200
-            },
-            "fuel": {
-                "capacity": 150,
-                "durability": 400
-            },
-            "hull": {
-                "armor": 35,
-                "armor_module_defence_cutoff": 0.45,
-                "durability": 750
-            },
-            "weapons": {
-                "torpedo": {
-                    "name": "Torpedo's",
-                    "tag": "torpedo",
-                    "type": ["attack", "defense"],
-                    "storage": 12,
-                    "max_range_km": 1500,
-                    "min_range_km": 100,
-                    "damage": 450,
-                    "accuracy": 0.98,
-                    "fire_threshold": 0.45,
-                    "range_falloff": 0.05
-                },
-                "pdc": {
-                    "name": "PDC's",
-                    "tag": "pdc",
-                    "type": ["attack", "defence"],
-                    "storage": 50,
-                    "max_range_km": 10,
-                    "min_range_km": 0,
-                    "damage": 45,
-                    "accuracy": 0.95,
-                    "fire_threshold": 0.12,
-                    "range_falloff": 0.5
-                }
-            },
-            "sensors": {
-                "ir_sensor": {
-                    "range_Mm": 0.5,
-                    "accuracy": 0.95
-                },
-                "lidar_sensor": {
-                    "range_Mm": 0.8,
-                    "accuracy": 0.88
-                },
-                "radar_sensor": {
-                    "range_Mm": 2.5,
-                    "accuracy": 0.56
-                }
-            },
-            "signature": {
-                "heat": 0.34,
-                "reflect": 0.67,
-                "radar": 0.03
-            }
+  "debug": {
+    "debug_ship_01": {
+      "info": {
+        "tag": "debug_ship_01",
+        "name": "Debug Ship",
+        "vessel_type": "ship",
+        "ship_type": "frigate",
+        "description": "This is a ship."
+      },
+      "location": {
+        "coordinates": [0.0, 0.0]
+      },
+      "engine": {
+        "fuel_use_p_Mm": 2.56,
+        "durability": 200
+      },
+      "fuel": {
+        "capacity": 150,
+        "durability": 400
+      },
+      "hull": {
+        "armor": 35,
+        "armor_module_defence_cutoff": 0.45,
+        "durability": 750
+      },
+      "weapons": {
+        "torpedo": {
+          "name": "Torpedo's",
+          "tag": "torpedo",
+          "type": ["attack", "defense"],
+          "storage": 12,
+          "max_range_km": 1500,
+          "min_range_km": 100,
+          "damage": 450,
+          "accuracy": 0.98,
+          "fire_threshold": 0.45,
+          "range_falloff": 0.05
+        },
+        "pdc": {
+          "name": "PDC's",
+          "tag": "pdc",
+          "type": ["attack", "defence"],
+          "storage": 50,
+          "max_range_km": 10,
+          "min_range_km": 0,
+          "damage": 45,
+          "accuracy": 0.95,
+          "fire_threshold": 0.12,
+          "range_falloff": 0.5
         }
+      },
+      "sensors": {
+        "ir_sensor": {
+          "range_Mm": 0.5,
+          "accuracy": 0.95
+        },
+        "lidar_sensor": {
+          "range_Mm": 0.8,
+          "accuracy": 0.88
+        },
+        "radar_sensor": {
+          "range_Mm": 2.5,
+          "accuracy": 0.56
+        }
+      },
+      "signature": {
+        "heat": 0.34,
+        "reflect": 0.67,
+        "radar": 0.03
+      }
+    }
+  },
+
+  "game": {
+    "scout_01": {
+      "info": {
+        "tag": "scout_01",
+        "name": "Scout 01",
+        "vessel_type": "ship",
+        "ship_type": "scout",
+        "description": "Light recon vessel."
+      },
+      "location": {
+        "coordinates": [1200.0, 450.5]
+      },
+      "engine": { "fuel_use_p_Mm": 1.2, "durability": 100 },
+      "fuel": { "capacity": 60, "durability": 200 },
+      "hull": { "armor": 10, "armor_module_defence_cutoff": 0.15, "durability": 200 },
+      "weapons": {},
+      "sensors": {
+        "radar_sensor": { "range_Mm": 1.0, "accuracy": 0.9 }
+      },
+      "signature": { "heat": 0.12, "reflect": 0.2, "radar": 0.05 }
     },
 
+    "freighter_omega": {
+      "info": {
+        "tag": "freighter_omega",
+        "name": "Freighter Omega",
+        "vessel_type": "ship",
+        "ship_type": "freighter",
+        "description": "Slow cargo hauler."
+      },
+      "location": {
+        "coordinates": [3400.0, 1700.5]
+      },
+      "engine": { "fuel_use_p_Mm": 5.0, "durability": 400 },
+      "fuel": { "capacity": 500, "durability": 1500 },
+      "hull": { "armor": 60, "armor_module_defence_cutoff": 0.6, "durability": 1500 },
+      "weapons": {},
+      "sensors": {
+        "radar_sensor": { "range_Mm": 0.5, "accuracy": 0.6 }
+      },
+      "signature": { "heat": 0.8, "reflect": 0.9, "radar": 0.5 }
+    },
 
-    "game": {
-
+    "corsair_07": {
+      "info": {
+        "tag": "corsair_07",
+        "name": "Corsair 07",
+        "vessel_type": "ship",
+        "ship_type": "raider",
+        "description": "Hostile-looking raider."
+      },
+      "location": {
+        "coordinates": [2500.0, 3100.0]
+      },
+      "engine": { "fuel_use_p_Mm": 3.8, "durability": 220 },
+      "fuel": { "capacity": 120, "durability": 500 },
+      "hull": { "armor": 30, "armor_module_defence_cutoff": 0.35, "durability": 600 },
+      "weapons": {
+        "pdc": { "name": "PDC", "tag": "pdc", "type": ["attack"], "storage": 20 }
+      },
+      "sensors": { "radar_sensor": { "range_Mm": 1.0, "accuracy": 0.7 } },
+      "signature": { "heat": 0.5, "reflect": 0.6, "radar": 0.12 }
     }
+  }
 }
