@@ -9,7 +9,7 @@ from utility.tools.dev_logger import DevLogger
 
 class Dataloader:
     def __init__(self):
-        self.log = DevLogger(Dataloader).log
+        self.logger = DevLogger(Dataloader)
 
         self.cwd = dirname(dirname(dirname(abspath(__file__))))
         self.data_paths = DATALOADER_SETTINGS['data_paths']
@@ -21,7 +21,7 @@ class Dataloader:
         :return: data dict
         """
         data_dict = {}
-        self.log(logging.INFO, f'loading data...')
+        self.logger.info(f'loading data...')
         for path in self.data_paths:
             full_path = f"{self.cwd}{self.data_paths[path]}"
             folder_name = Path(full_path).name  # <-- get just the folder name
@@ -40,7 +40,7 @@ class Dataloader:
         for filename in os.listdir(full_path):
             if filename.endswith(".json"):
                 file_path = os.path.join(full_path, filename)
-                self.log(logging.INFO, f'loading \'{filename}\'')
+                self.logger.info(f'loading \'{filename}\'')
                 with open(file_path, "r") as file:
                     loaded_data = json.load(file)
                     data_dict[filename.removesuffix('.json')] = loaded_data

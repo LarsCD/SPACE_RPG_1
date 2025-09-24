@@ -20,3 +20,4 @@ class Instance_Generator:
                 location_object_list.append(location_object)
 
         return location_object_list
+

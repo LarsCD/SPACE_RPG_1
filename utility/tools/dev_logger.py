@@ -39,8 +39,8 @@ class DevLogger:
         logging_class: Type,
         log_level: int = logging.DEBUG,
         print_level: int = logging.INFO,
-        log_dir: Optional[str] = None,
-        enabled: Optional[bool] = None
+        log_dir: Optional[str] = DEV_SETTINGS['logging_dir'],
+        enabled: Optional[bool] = DEV_SETTINGS['logging_enabled']
     ):
         """
         Initialize the DevLogger

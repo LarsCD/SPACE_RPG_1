@@ -25,7 +25,7 @@ class Vessel:
 
 
     def __str__(self):
-        return f"[{self.vessel_type}] '{self.name}' (tag='{self.tag}') at {self.coordinates}"
+        return f"{self.vessel_type}__{self.tag}__{self.coordinates}"
 
 
 

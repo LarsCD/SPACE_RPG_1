@@ -8,8 +8,7 @@ class World:
         self.vessels: list[Vessel] = []         # list of all vessels in the world
 
 
-    def update(self):
-        # place where the updating of positions and states will be
-        pass
-
-
+    def update(self, dt: float):
+        # update vessel movement and AI
+        for vessel in self.vessels:
+            vessel.update(dt)

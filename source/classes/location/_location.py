@@ -22,7 +22,7 @@ class Location:
 
 
     def __str__(self):
-        return f"[{self.location_type}] \'{self.name}\' (tag=\'{self.tag}\') at {self.coordinates}"
+        return f"{self.location_type}__{self.tag}__{self.coordinates}"
 
 
     def update_location(self, coordinates: tuple) -> None:

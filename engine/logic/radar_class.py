@@ -16,7 +16,7 @@ class Radar_System:
             dx = location.coordinates[0] - sx
             dy = location.coordinates[1] - sy
 
-            # remap axes (ship-centered + player orientation) and add to loc
+            # remap axes (ship-centered + player orientation) and attach to object
             location.radar_dx = dy * self.scale
             location.radar_dy = -dx * self.scale
 
