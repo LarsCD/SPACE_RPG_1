@@ -5,6 +5,10 @@ class Location:
     def __init__(self, data: dict) -> None:
         self.coordinates: tuple = tuple(data['location']['coordinates'])        # 2d coordinate
         self.location_parent_tag: str = data['location']['location_parent_tag'] # binds this location to another location as child
+
+        self.radar_dx: float = 0.0
+        self.radar_dy: float = 0.0
+
         self.child_locations = []
 
         # info

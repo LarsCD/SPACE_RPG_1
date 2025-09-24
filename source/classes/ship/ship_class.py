@@ -1,6 +1,9 @@
 import logging
+from xml.sax.xmlreader import Locator
+
 import numpy as np
 
+from source.classes.location._location import Location
 from source.classes.ship._vessel import Vessel
 from utility.tools.dev_logger import DevLogger
 
@@ -56,3 +59,14 @@ class Ship(Vessel):
             return distance
         else:
             return 0.0
+
+    def get_distance_to_location_km(self, location: Location):
+        ship_loc = np.array(self.coordinates)
+        location_loc = np.array(location.coordinates)
+
+        distance = np.linalg.norm(ship_loc - location_loc)
+        return distance
+
+    def get_distance_to_location_Mm(self, location: Location):
+        distance = self.get_distance_to_location_km(location)
+        return distance/1000

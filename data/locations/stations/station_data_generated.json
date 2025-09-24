@@ -4,28 +4,33 @@
             "info": {
                 "tag": "debug_data",
                 "name": "Debug Station",
-                "loc_type": "station",
+                "location_type": "station",
+                "station_type": "orbital",
                 "description": "This is a station."
             },
             "location": {
-                "coordinates": [2580.0, 2030.1]
+                "coordinates": [-2580.0, -2030.1]
             },
             "functions": {
                 "services": ["jobs", "market", "repair"]
+            },
+            "flags": {
+                "is_hidden": false
             }
         },
         "debug_station_02": {
             "info": {
                 "tag": "debug_data",
                 "name": "Debug Central Hub",
-                "loc_type": "station",
+                "location_type": "station",
+                "station_type": "orbital",
                 "description": "Fully operational central hub with multiple amenities.",
                 "faction": "Neutral",
                 "level_requirement": 5,
                 "capacity": 250
             },
             "location": {
-                "coordinates": [3120.5, 4150.2],
+                "coordinates": [-3120.5, 4150.2],
                 "zone": "Sector 12"
             },
             "functions": {
@@ -37,6 +42,9 @@
                 "fuel_station": true,
                 "supplies": ["food", "medkits", "ammo"],
                 "shops": ["tech_store", "weapon_depot", "armor_vendor"]
+            },
+            "flags": {
+                "is_hidden": false
             }
         }
     },
@@ -45,14 +53,16 @@
             "info": {
                 "tag": "station_01",
                 "name": "Ironhold Station",
-                "loc_type": "station",
+                "location_type": "station",
+                "station_type": "orbital",
                 "description": "A mining hub surrounded by asteroid belts.",
                 "faction": "Iron Confederacy",
                 "level_requirement": 3,
                 "capacity": 100
             },
             "location": {
-                "coordinates": [1200.0, 450.5],
+                "coordinates": [1200.0, -450.5],
+                "location_parent_tag": "debug_planet_01",
                 "zone": "Asteroid Belt A1"
             },
             "functions": {
@@ -64,20 +74,25 @@
                 "fuel_station": false,
                 "supplies": ["ore", "miner_tools"],
                 "shops": ["ore_market", "tool_vendor"]
+            },
+            "flags": {
+                "is_hidden": false
             }
         },
         "station_02": {
             "info": {
                 "tag": "station_02",
                 "name": "Silverwind Port",
-                "loc_type": "station",
+                "location_type": "station",
+                "station_type": "orbital",
                 "description": "Trade station with extensive commerce activity.",
                 "faction": "Silverwind Trade Guild",
                 "level_requirement": 2,
                 "capacity": 150
             },
             "location": {
-                "coordinates": [900.0, 2200.3],
+                "coordinates": [-900.0, -2200.3],
+                "location_parent_tag": "debug_planet_01",
                 "zone": "Sector 7"
             },
             "functions": {
@@ -89,20 +104,25 @@
                 "fuel_station": true,
                 "supplies": ["food", "tools"],
                 "shops": ["general_store", "blacksmith"]
+            },
+            "flags": {
+                "is_hidden": false
             }
         },
         "station_03": {
             "info": {
                 "tag": "station_03",
                 "name": "Crimson Spire",
-                "loc_type": "station",
+                "location_type": "station",
+                "station_type": "orbital",
                 "description": "A fortified military station.",
                 "faction": "Crimson Guard",
                 "level_requirement": 6,
                 "capacity": 200
             },
             "location": {
-                "coordinates": [3400.0, 1700.5],
+                "coordinates": [-3400.0, 1700.5],
+                "location_parent_tag": "debug_planet_01",
                 "zone": "Red Sector"
             },
             "functions": {
@@ -114,13 +134,17 @@
                 "fuel_station": true,
                 "supplies": ["ammo", "medkits"],
                 "shops": ["armory", "tech_vendor"]
+            },
+            "flags": {
+                "is_hidden": false
             }
         },
         "station_04": {
             "info": {
                 "tag": "station_04",
                 "name": "Bluehaven Dock",
-                "loc_type": "station",
+                "location_type": "station",
+                "station_type": "orbital",
                 "description": "A peaceful civilian port with minimal security.",
                 "faction": "Independent",
                 "level_requirement": 1,
@@ -128,6 +152,7 @@
             },
             "location": {
                 "coordinates": [500.5, 1200.2],
+                "location_parent_tag": "debug_planet_01",
                 "zone": "Sector 3"
             },
             "functions": {
@@ -139,20 +164,25 @@
                 "fuel_station": true,
                 "supplies": ["food", "water"],
                 "shops": ["souvenir_shop", "cafeteria"]
+            },
+            "flags": {
+                "is_hidden": false
             }
         },
         "station_05": {
             "info": {
                 "tag": "station_05",
                 "name": "Obsidian Outpost",
-                "loc_type": "station",
+                "location_type": "station",
+                "station_type": "orbital",
                 "description": "Remote outpost for explorers and traders.",
                 "faction": "Obsidian Collective",
                 "level_requirement": 4,
                 "capacity": 120
             },
             "location": {
-                "coordinates": [2500.0, 3100.0],
+                "coordinates": [-2500.0, 3100.0],
+                "location_parent_tag": "debug_planet_01",
                 "zone": "Outer Rim"
             },
             "functions": {
@@ -164,20 +194,25 @@
                 "fuel_station": true,
                 "supplies": ["tools", "medkits"],
                 "shops": ["general_store", "repair_vendor"]
+            },
+            "flags": {
+                "is_hidden": false
             }
         },
         "station_06": {
             "info": {
                 "tag": "station_06",
                 "name": "Goldenspire Terminal",
-                "loc_type": "station",
+                "location_type": "station",
+                "station_type": "orbital",
                 "description": "Luxury trading station.",
                 "faction": "Golden Traders",
                 "level_requirement": 5,
                 "capacity": 200
             },
             "location": {
-                "coordinates": [4000.0, 1000.0],
+                "coordinates": [4000.0, -1000.0],
+                "location_parent_tag": "debug_planet_01",
                 "zone": "Sector 9"
             },
             "functions": {
@@ -189,13 +224,17 @@
                 "fuel_station": true,
                 "supplies": ["luxury_goods", "food", "water"],
                 "shops": ["jewelers", "boutiques", "tech_store"]
+            },
+            "flags": {
+                "is_hidden": false
             }
         },
         "station_07": {
             "info": {
                 "tag": "station_07",
                 "name": "Verdant Oasis",
-                "loc_type": "station",
+                "location_type": "station",
+                "station_type": "orbital",
                 "description": "A station with lush hydroponic farms.",
                 "faction": "Green Coalition",
                 "level_requirement": 3,
@@ -203,6 +242,7 @@
             },
             "location": {
                 "coordinates": [1800.0, 2700.0],
+                "location_parent_tag": "debug_planet_01",
                 "zone": "Sector 5"
             },
             "functions": {
@@ -214,20 +254,25 @@
                 "fuel_station": true,
                 "supplies": ["food", "medkits", "plants"],
                 "shops": ["botany_store", "general_store"]
+            },
+            "flags": {
+                "is_hidden": false
             }
         },
         "station_08": {
             "info": {
                 "tag": "station_08",
                 "name": "Shadow Nexus",
-                "loc_type": "station",
+                "location_type": "station",
+                "station_type": "orbital",
                 "description": "A clandestine station with limited access.",
                 "faction": "Shadow Syndicate",
                 "level_requirement": 7,
                 "capacity": 90
             },
             "location": {
-                "coordinates": [3200.0, 2500.0],
+                "coordinates": [-3200.0, -2500.0],
+                "location_parent_tag": "debug_planet_01",
                 "zone": "Sector 14"
             },
             "functions": {
@@ -239,20 +284,25 @@
                 "fuel_station": false,
                 "supplies": ["ammo", "tech_parts"],
                 "shops": ["black_market"]
+            },
+            "flags": {
+                "is_hidden": false
             }
         },
         "station_09": {
             "info": {
                 "tag": "station_09",
                 "name": "Crystal Point",
-                "loc_type": "station",
+                "location_type": "station",
+                "station_type": "orbital",
                 "description": "Tourist destination with panoramic views.",
                 "faction": "Independent",
                 "level_requirement": 1,
                 "capacity": 60
             },
             "location": {
-                "coordinates": [600.0, 1400.0],
+                "coordinates": [-600.0, 1400.0],
+                "location_parent_tag": "debug_planet_01",
                 "zone": "Sector 2"
             },
             "functions": {
@@ -264,20 +314,25 @@
                 "fuel_station": false,
                 "supplies": ["food", "souvenirs"],
                 "shops": ["gift_shop", "cafeteria"]
+            },
+            "flags": {
+                "is_hidden": false
             }
         },
         "station_10": {
             "info": {
                 "tag": "station_10",
                 "name": "Stormbreaker Station",
-                "loc_type": "station",
+                "location_type": "station",
+                "station_type": "orbital",
                 "description": "A stormy outpost near hazardous regions.",
                 "faction": "Storm Guard",
                 "level_requirement": 6,
                 "capacity": 150
             },
             "location": {
-                "coordinates": [2900.0, 3700.0],
+                "coordinates": [2900.0, -3700.0],
+                "location_parent_tag": "debug_planet_01",
                 "zone": "Sector 11"
             },
             "functions": {
@@ -289,6 +344,9 @@
                 "fuel_station": true,
                 "supplies": ["medkits", "ammo", "tools"],
                 "shops": ["armory", "general_store"]
+            },
+            "flags": {
+                "is_hidden": false
             }
         }
     }
