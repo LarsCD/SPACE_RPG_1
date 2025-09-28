@@ -16,10 +16,10 @@ AUTH_SETTINGS = {
 }
 GAME_DEFAULTS = {
     'game_name': "SPACE RPG 1",
-    'game_version': 'v0.3.1'
+    'game_version': 'v0.3.2'
 }
 GAME_SETTINGS = {
-    'game_resolution': [38, 115]  # will probably not be in use when using pygame
+    'game_resolution': [38, 115]  # ONLY FOR TERMINAL, will probably not be in use when using pygame
 }
 DATALOADER_SETTINGS = {
     'data_paths': {

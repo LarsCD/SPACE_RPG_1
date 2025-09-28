@@ -125,7 +125,7 @@ class RadarRenderer:
             # Draw vessel/location
             if issubclass(type(obj), Vessel):
                 self._draw_vessel_blip(x_px, y_px, obj, player)
-                self._draw_trail(obj)
+                self._draw_trail(obj, player)
             elif issubclass(type(obj), Location):
                 self._draw_location_blip(x_px, y_px)
 
@@ -140,10 +140,10 @@ class RadarRenderer:
 
         # draw player
         self._draw_player_blip()
-        self._draw_trail(player)
+        self._draw_trail(player, player)
 
 
-    def _draw_trail(self, vessel: Vessel | Player):
+    def _draw_trail(self, vessel: Vessel | Player, player: Player):
         if not hasattr(vessel, "trail") or not vessel.trail:
             return
 
@@ -152,19 +152,16 @@ class RadarRenderer:
 
         for x, y, t in vessel.trail:
             age = now - t
-            fade = max(0, 1.0 - age / vessel.trail_lifetime)  # 1→0 over lifetime
+            fade = max(0, 1.0 - age / vessel.trail_lifetime)
             if fade <= 0:
                 continue
 
-            # world → radar transform relative to player
-            rdx, rdy = self.world_to_radar((x, y), vessel)
+            # world → radar transform relative to PLAYER (not vessel itself)
+            rdx, rdy = self.world_to_radar((x, y), player)
             rx, ry = int(cx + rdx), int(cy + rdy)
 
-            # faded green color
             color = (0, int(255 * fade), 0)
-
             pygame.draw.circle(self.surface, color, (rx, ry), 2)
-
 
 
     # --- Small shape render helpers ---

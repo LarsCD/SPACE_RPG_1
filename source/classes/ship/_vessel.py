@@ -30,8 +30,8 @@ class Vessel:
         # movement properties
         self.speed: float = 0.0           # current speed (km/s)
         self.max_speed: float = 5000.0    # max speed (km/s)
-        self.acceleration: float = 9.81  # km/s^2
-        self.deceleration: float = 9.81  # km/s^2
+        self.acceleration: float = 50  # km/s^2
+        self.deceleration: float = 50  # km/s^2
         self.destination: Location | None = None
         self.orientation: float = 0.0
         self.vector: np.ndarray = np.array((0.0, 0.0))
