@@ -10,6 +10,7 @@ class Location:
         self.radar_dy: float = 0.0
 
         self.child_locations = []
+        self.docked_vessels = set()
 
         # info
         self.name: str = data['info']['name']                       # name of location
@@ -63,6 +64,14 @@ class Location:
         :return:
         """
         self.child_locations.append(location_object)
+
+
+    def debug_info(self):
+        return {
+            "name": self.name,
+            "coords": self.coordinates,
+            "docked": [v.name for v in self.docked_vessels],
+        }
 
 
 

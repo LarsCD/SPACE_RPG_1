@@ -64,11 +64,11 @@ class InputManager:
         if not hasattr(event, "key"):
             return
         if event.key == pygame.K_UP:
-            self.render_scale += 0.005
+            self.render_scale += 0.010
             self.render_label_scale = max(0.0001, self.render_label_scale - 0.005)
         elif event.key == pygame.K_DOWN:
             self.render_scale = max(0.001, self.render_scale - 0.005)
-            self.render_label_scale += 0.005
+            self.render_label_scale += 0.010
 
         # sync values
         self.radar_system.scale = self.render_scale

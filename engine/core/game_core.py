@@ -39,7 +39,7 @@ class Game:
 
         # --- world & player ---
         self.world_manager = WorldManager()
-        self.locations, self.vessels, self.player = self.world_manager.load()
+        self.world_locations, self.vessels, self.player = self.world_manager.load()
 
         # --- radar configuration ---
         self.center = (screen_size[0] // 2, screen_size[1] // 2)
@@ -74,8 +74,8 @@ class Game:
         self.right_panel.register_action("Lock", self._toggle_lock)
 
         # debug: sample default target (remove later)
-        if self.locations:
-            self.player.target = self.locations[4]
+        if self.world_locations:
+            self.player.target = self.world_locations[4]
 
         # runtime
         self.clock = pygame.time.Clock()
@@ -131,11 +131,11 @@ class Game:
                 v.update(dt)
 
             # --- radar blips ---
-            # compute blips for locations (and optionally vessels)
+            # compute blips for world_locations (and optionally vessels)
             # radar_system.get_blips expects player and a list of Location-like objects
-            blips: list[Location | Vessel] = []
-            # include locations and vessels as blippable objects
-            blips.extend(self.radar_system.get_blips(self.player, self.locations))
+            blips: list[Location | Vessel | Player] = []
+            # include world_locations and vessels as blippable objects
+            blips.extend(self.radar_system.get_blips(self.player, self.world_locations))
             # for vessels, convert to same interface (if you want them on radar)
             # NOTE: Radar_System.get_blips mutates objects with radar_dx/radar_dy
             if self.vessels:

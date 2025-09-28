@@ -24,8 +24,9 @@ class Ship(Vessel):
         self.sensors: dict = data['sensors']
         self.signature: dict = data['signature']
 
+
         # combat info
-        self.target: Ship = None
+        self.target = None
         self.target_range: float = None
         self.target_distance: float = 0.0
 
@@ -39,7 +40,6 @@ class Ship(Vessel):
     def give_target(self, target_object):
         self.target = target_object
         self.has_target = self.check_has_target()
-        self.log(logging.INFO, f"[{self}]: has been given target: {target_object}")
 
 
     def release_target(self):

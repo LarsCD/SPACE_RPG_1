@@ -1,0 +1,50 @@
+https://tree.nathanfriend.com/?s=(%27optiRs!(%27fancyI~fullPWh!false~trailLgSlashI~rootDotI)~A!(%27A!%279VZ*84NO_8QkBast6oidBst3BK9J----Y*K9_CedJVvesselBHB-H_9J5engLeVcore*N_core4toolsQLput*Lput_EQMgic*radar_74world_7QEBworld_EQFBpanel_F4radar_F0AV7eBk*-_k4K74O6*-O64H*-H_74-_vesselQCorBLstance_CorQsimul3*combW_calcul3s0utilityVtoolBMgB9Mad64dev_Mgg64GUT_20maL0pyN_maLX%27)~v6siR!%271%27)*VY%200X53WiR4X*5%5Cn6er7class8Z_settLgs9dWaAsourceBs*Cgen6WEmanag6Frend66HshipI!trueJ.jsRK-st3_LinMloNgameOplayQ0-RonV5-WatX.pyY--%20ZcRfigkMc3%01kZYXWVRQONMLKJIHFECBA98765430-*
+
+data
+  config
+    config_settings.py
+    gameplay_config_settings.py
+  locations
+    asteroids
+    stations
+      station_data.json
+      station_data_generated.json
+  vessels
+    ships
+      ship_data.json
+engine
+  core
+    game_core.py
+    tools.py
+  input
+    input_manager.py
+  logic
+    radar_class.py
+    world_class.py
+  managers
+    world_manager.py
+  renderers
+    panel_renderer.py
+    radar_renderer.py
+source
+  classes
+    location
+      _location.py
+      station_class.py
+    player
+      player.py
+    ship
+      ship_class.py
+      _vessel.py
+  generators
+    instance_generator.py
+  simulation
+    combat_calculations.py
+utility
+  tools
+    logs
+    dataloader.py
+    dev_logger.py
+    GUT_2.py
+main.py
+pygame_main.py
