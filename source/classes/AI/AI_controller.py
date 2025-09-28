@@ -40,6 +40,7 @@ class AIController(Ship):
                 self._choose_new_destination()
 
         elif self.state == AIState.TRAVELING:
+            self.update_flight(dt)
 
             # destination arrives at destination
             if self.get_destination_distance() < 25:

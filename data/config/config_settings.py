@@ -16,7 +16,7 @@ AUTH_SETTINGS = {
 }
 GAME_DEFAULTS = {
     'game_name': "SPACE RPG 1",
-    'game_version': 'v0.2.0'
+    'game_version': 'v0.3.1'
 }
 GAME_SETTINGS = {
     'game_resolution': [38, 115]  # will probably not be in use when using pygame

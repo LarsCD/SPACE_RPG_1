@@ -182,10 +182,10 @@ class RadarRenderer:
             unit_prefix = "km"
             dist_label = round(dist * 1000)
         else:
-            dist_label = round(dist)
+            dist_label = round(dist, 1)
 
-        id_label = self.font.render(f"id:      {vessel.tag}", True, BLIP_COLOR)
-        state_label = self.font.render(f"dist: {dist_label} {unit_prefix}", True, BLIP_COLOR)
+        id_label = self.font.render(f"id: {vessel.tag}", True, BLIP_COLOR)
+        state_label = self.font.render(f"{dist_label} {unit_prefix}", True, BLIP_COLOR)
 
         self.surface.blit(id_label, (x_px+25, y_px-25))
         self.surface.blit(state_label, (x_px + 25, y_px - 5))

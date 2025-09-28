@@ -1,6 +1,5 @@
 import time
 from collections import deque
-
 import numpy as np
 import math
 
@@ -29,10 +28,10 @@ class Vessel:
         self.visible_on_radar: bool = True
 
         # movement properties
-        self.speed: float = 0.0           # current speed (m/s)
-        self.max_speed: float = 5000.0    # max speed (m/s)
-        self.acceleration: float = 500  # m/s^2
-        self.deceleration: float = 500  # m/s^2
+        self.speed: float = 0.0           # current speed (km/s)
+        self.max_speed: float = 5000.0    # max speed (km/s)
+        self.acceleration: float = 9.81  # km/s^2
+        self.deceleration: float = 9.81  # km/s^2
         self.destination: Location | None = None
         self.orientation: float = 0.0
         self.vector: np.ndarray = np.array((0.0, 0.0))
@@ -82,7 +81,7 @@ class Vessel:
         return distance
 
 
-    def update(self, dt: float):
+    def update_flight(self, dt: float):
         if not self.destination:
             # decelerate to stop
             if self.speed > 0:

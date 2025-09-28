@@ -126,7 +126,7 @@ class Game:
 
             # --- update simulation ---
             # update player and vessels (vessel.update should move them if they have destinations)
-            self.player.update(dt)
+            self.player.update_flight(dt)
             for v in self.vessels:
                 v.update(dt)
 

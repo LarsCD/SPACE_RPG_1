@@ -46,7 +46,7 @@ class PanelRenderer:
         lines = [
             f"Player: {player.name}",
             f"Coords: {tuple(int(c) for c in player.coordinates)}",
-            f"Speed:  {round(player.speed, 1)} m/s",
+            f"Speed:  {round(player.speed, 1)} km/s",
             f"- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
         ]
         for l in lines:
@@ -108,7 +108,7 @@ class PanelRenderer:
             unit_prefix = "km"
             dist_label = round(player.get_distance_to_location_Mm(target)*1000, 1)
         else:
-            dist_label = round(dist_mm)
+            dist_label = round(dist_mm, 1)
 
         # lines = [f"Target: {name}", f"Type: {ttype}", f"Distance: {dist_mm} Mm"]
         # for line in lines:
